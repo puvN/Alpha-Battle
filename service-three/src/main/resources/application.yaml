@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: service-three
+  jackson:
+    serialization:
+      indent_output: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/alfa_battle
+    username: alfa_battle
+    password: qwe123
+    hikari:
+      connection-timeout: 200000
+      maximum-pool-size: 5
+    platform: postgres
+
+server:
+  port: 8082
