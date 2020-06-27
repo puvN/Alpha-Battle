@@ -25,7 +25,7 @@ public class Consumer {
 	private final ObjectMapper objectMapper = new ObjectMapper()
 			.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-	@KafkaListener(topics = "RAW_PAYMENTS", groupId = "group_id14")
+	@KafkaListener(topics = "RAW_PAYMENTS", groupId = "group_id17")
 	public void consume(String message) throws IOException {
 		var payment = toModelClass(message, Payment.class);
 		payments.put(payment.getRef(), payment);

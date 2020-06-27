@@ -1,6 +1,7 @@
 package com.puvn.servicetwo.controller;
 
 import com.puvn.servicetwo.exception.ExceptionDTO;
+import com.puvn.servicetwo.model.Stat;
 import com.puvn.servicetwo.model.UserAnalytic;
 import com.puvn.servicetwo.service.MyService;
 import com.puvn.servicetwo.status.StatusDTO;
@@ -48,6 +49,19 @@ public class KafkaController {
 			throw new RuntimeException();
 		} else {
 			return result;
+		}
+	}
+
+	@ApiOperation(value = "Возвращает статистику по пользователю",
+			notes = "Возвращает статистику по пользователю")
+	@GetMapping(value = "/analytic/{userId}/stats")
+	public @ResponseBody
+	Stat getUserStats(@PathVariable("userId") String userId) {
+		var userAnalytic = this.myService.getUserAnalytic(userId);
+		if (userAnalytic == null) {
+			throw new RuntimeException();
+		} else {
+			return this.myService.getUserStats(userAnalytic);
 		}
 	}
 
