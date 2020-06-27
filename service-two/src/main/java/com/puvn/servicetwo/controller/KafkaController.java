@@ -3,6 +3,7 @@ package com.puvn.servicetwo.controller;
 import com.puvn.servicetwo.exception.ExceptionDTO;
 import com.puvn.servicetwo.model.UserAnalytic;
 import com.puvn.servicetwo.service.MyService;
+import com.puvn.servicetwo.status.StatusDTO;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -57,5 +58,13 @@ public class KafkaController {
 	public @ResponseBody
 	ExceptionDTO getError() {
 		return new ExceptionDTO();
+	}
+
+	@ApiOperation(value = "Возвращает ошибку",
+			notes = "Возвращает ошибку")
+	@GetMapping(value = "/admin/health")
+	public @ResponseBody
+	StatusDTO getHealth() {
+		return new StatusDTO();
 	}
 }
